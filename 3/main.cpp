@@ -35,7 +35,7 @@ for (int y=0; y<fileInfo.st_size; y+=stride)
 {
 for (int x=0; x<width; x+=1)
 {
-printf("%c\n", map[y+x]);
+printf("%c", map[y+x]);
 }
 printf("\n");
 }

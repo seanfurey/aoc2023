@@ -68,7 +68,10 @@ int main(int argc, const char *argv[])
             if (is_digit(map[x+y]))
             {
                 number = number*10 + map[x+y] - '0';
-                flag = flag | beside_symbol(x,y);
+                if (!flag)
+                {
+                    flag = beside_symbol(x,y);
+                }
 
                 printf("%c", flag ? '*' : '.');
             }

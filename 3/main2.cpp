@@ -58,8 +58,6 @@ int main(int argc, const char *argv[])
     height = fileInfo.st_size / width;
     size = fileInfo.st_size;
     stride = width + 1;
-    bool flag = false;
-    int number=0;
     int total=0;
     for (int y=0; y<fileInfo.st_size; y+=stride)
     {

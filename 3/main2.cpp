@@ -19,16 +19,14 @@ int find_width()
     return w;
 }
 
+bool is_gear(char c)
+{
+    return c=='*';
+}
+
 bool is_digit(char c)
 {
     return c>='0' && c<='9';
-}
-
-bool is_symbol(char c)
-{
-    return c!='\n'
-        && c!='.'
-        && (c<'0' || c>'9');
 }
 
 bool beside_symbol(int x, int y)
@@ -42,7 +40,7 @@ bool beside_symbol(int x, int y)
     if (bry >= size) bry-=stride;
     for (int xp=tlx; xp<=brx; xp++)
         for (int yp=tly; yp<=bry; yp+=stride)
-            if (is_symbol(map[xp+yp])) return true;
+            if (is_gear(map[xp+yp])) return true;
     return false;
 }
 

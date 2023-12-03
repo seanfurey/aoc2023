@@ -24,8 +24,11 @@ bool is_gear(char c)
     return c=='*';
 }
 
-bool is_digit(char c)
+bool is_digit(int x, int y)
 {
+    if (x < 0 || x >= width) return false;
+    if (y < 0 || y >= height) return false;
+    char c = y*stride + x;
     return c>='0' && c<='9';
 }
 

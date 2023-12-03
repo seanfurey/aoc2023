@@ -39,6 +39,5 @@ printf("%c", map[y+x]);
 }
 printf("\n");
 }
-printf("%d\n", width);
 return 0;
 }

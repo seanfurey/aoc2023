@@ -42,7 +42,7 @@ for (int y=0; y<fileInfo.st_size; y+=stride)
 {
 for (int x=0; x<width; x+=1)
 {
-printf("%c", is_symbol(map[y+x]));
+printf("%d", is_symbol(map[y+x]));
 }
 printf("\n");
 }

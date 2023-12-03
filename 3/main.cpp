@@ -62,6 +62,7 @@ size = fileInfo.st_size;
 stride = width + 1;
 bool flag = false;
 int number=0;
+int total=0;
 for (int y=0; y<fileInfo.st_size; y+=stride)
 {
 for (int x=0; x<width; x+=1)
@@ -75,11 +76,14 @@ printf("%c", flag ? '*' : '.');
 }
 else
 {
+if (flag) total += number;
 flag = false;
+number = 0;
 printf(" ");
 }
 }
 printf("\n");
 }
+printf("%d\n", number);
 return 0;
 }

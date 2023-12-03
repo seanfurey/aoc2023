@@ -32,6 +32,20 @@ bool is_digit(int x, int y)
     return c>='0' && c<='9';
 }
 
+int find_number(int x, int y)
+{
+    if (!is_digit(x,y)) return -1;
+    while (is_digit(x-1,y)) x--;
+    int number = 0;
+    while (is_digit(x,y))
+    {
+        number*=10;
+        number += map[y*stride+x] - '0';
+        x++;
+    }
+    return number;
+
+}
 int main(int argc, const char *argv[])
 {
 
@@ -56,9 +70,16 @@ int main(int argc, const char *argv[])
                 printf(" ");
                 continue;
             }
-            printf("*");
+            printf("*\n");
+{ int r = find_number(x-1, y-1); if (r!=-1) printf("%d\n", r); }
+{ int r = find_number(x, y-1); if (r!=-1) printf("%d\n", r); }
+{ int r = find_number(x+1, y-1); if (r!=-1) printf("%d\n", r); }
+{ int r = find_number(x-1, y); if (r!=-1) printf("%d\n", r); }
+{ int r = find_number(x+1, y); if (r!=-1) printf("%d\n", r); }
+{ int r = find_number(x-1, y+1); if (r!=-1) printf("%d\n", r); }
+{ int r = find_number(x, y+1); if (r!=-1) printf("%d\n", r); }
+{ int r = find_number(x+1, y+1); if (r!=-1) printf("%d\n", r); }
         }
-        printf("\n");
     }
     printf("%d\n", total);
     return 0;

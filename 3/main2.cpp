@@ -67,7 +67,6 @@ int main(int argc, const char *argv[])
         {
             if (!is_gear(map[x+y*stride]))
             {
-                printf(" ");
                 continue;
             }
             printf("*\n");

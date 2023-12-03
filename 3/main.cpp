@@ -12,7 +12,7 @@ int width;
 int find_width()
 {
     int w=0;
-    while (map[w]!='\n') {}
+    while (map[w]!='\n') { w++; }
     return w;
 }
 

@@ -68,10 +68,14 @@ for (int x=0; x<width; x+=1)
 {
 if (is_digit(map[x+y]))
 {
-printf("%c", beside_symbol(x,y) ? '*' : '.');
+number = number*10 + map[x+y] - '0';
+flag = flag | beside_symbol(x,y);
+
+printf("%c", flag ? '*' : '.');
 }
 else
 {
+flag = false;
 printf(" ");
 }
 }

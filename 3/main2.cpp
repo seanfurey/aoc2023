@@ -65,14 +65,12 @@ int main(int argc, const char *argv[])
     {
         for (int x=0; x<width; x+=1)
         {
-            if (is_gear(map[x+y]))
-            {
-                printf("*");
-            }
-            else
+            if (!is_gear(map[x+y]))
             {
                 printf(" ");
+                continue;
             }
+            printf("*");
         }
         printf("\n");
     }

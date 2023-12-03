@@ -65,21 +65,12 @@ int main(int argc, const char *argv[])
     {
         for (int x=0; x<width; x+=1)
         {
-            if (is_digit(map[x+y]))
+            if (is_gear(map[x+y]))
             {
-                number = number*10 + map[x+y] - '0';
-                if (!flag)
-                {
-                    flag = beside_symbol(x,y);
-                }
-
-                printf("%c", flag ? '*' : '.');
+                printf("*");
             }
             else
             {
-                if (flag) total += number;
-                flag = false;
-                number = 0;
                 printf(" ");
             }
         }

@@ -29,14 +29,14 @@ bool is_symbol(char c)
 bool beside_symbol(int x, int y)
 {
     int tlx = x-1;
-    int tly = y;//-stride;
+    int tly = y-stride;
     int brx = x+1;
     int bry = y+stride;
     if (tlx < 0) tlx+=1;
-//    if (tly < 0) tly+=stride;
+    if (tly < 0) tly+=stride;
     if (bry >= size) bry-=stride;
 for (int xp=tlx; xp<=brx; xp++)
-for (int yp=tly; yp<=bry; yp++)
+for (int yp=tly; yp<=bry; yp+=stride)
 if (is_symbol(map[xp+yp])) return true;
 return false;
 }

@@ -44,11 +44,11 @@ int main(int argc, const char *argv[])
     size = fileInfo.st_size;
     stride = width + 1;
     int total=0;
-    for (int y=0; y<fileInfo.st_size; y+=stride)
+    for (int y=0; y<height; y+=1)
     {
         for (int x=0; x<width; x+=1)
         {
-            if (!is_gear(map[x+y]))
+            if (!is_gear(map[x+y*stride]))
             {
                 printf(" ");
                 continue;

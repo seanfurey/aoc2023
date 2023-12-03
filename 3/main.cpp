@@ -8,6 +8,8 @@
 
 char *map;
 int width;
+int height;
+int stride;
 
 int find_width()
 {
@@ -27,6 +29,16 @@ fstat(fd, &fileInfo);
 map = (char*)mmap(0, fileInfo.st_size, PROT_READ, MAP_SHARED, fd, 0);
 
 width = find_width();
+height = fileInfo.st_size / width;
+stride = width + 1;
+for (int y=0; y<fileInfo.st_size; y+=stride)
+{
+for (int x=0; x<width; x+=1)
+{
+printf("%c\n", map[y+x]);
+}
+printf("\n");
+}
 printf("%d\n", width);
 return 0;
 }

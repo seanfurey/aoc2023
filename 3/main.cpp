@@ -84,6 +84,6 @@ printf(" ");
 }
 printf("\n");
 }
-printf("%d\n", number);
+printf("%d\n", total);
 return 0;
 }

@@ -19,6 +19,11 @@ int find_width()
     return w;
 }
 
+bool is_digit(char c)
+{
+return c>='0' || c<='9';
+}
+
 bool is_symbol(char c)
 {
     return c!='\n'
@@ -55,11 +60,20 @@ width = find_width();
 height = fileInfo.st_size / width;
 size = fileInfo.st_size;
 stride = width + 1;
+bool flag = false;
+int number=0;
 for (int y=0; y<fileInfo.st_size; y+=stride)
 {
 for (int x=0; x<width; x+=1)
 {
-printf("%c", beside_symbol(x,y) ? '*' : ' ');
+if (is_digit(map[x+y]))
+{
+printf("%c", beside_symbol(x,y) ? '*' : '.');
+}
+else
+{
+printf(" ");
+}
 }
 printf("\n");
 }

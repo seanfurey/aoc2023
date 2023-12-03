@@ -32,6 +32,7 @@ bool beside_symbol(int x, int y)
     int tly = y-stride;
     int brx = x+1;
     int bry = y+stride;
+    if (tlx < 0) tlx+=1;
     if (tly < 0) tly+=stride;
     if (bry >= size) bry-=stride;
 for (int xp=tlx; xp<=brx; xp++)

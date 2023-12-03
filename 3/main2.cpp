@@ -32,9 +32,9 @@ bool is_digit(int x, int y)
     return c>='0' && c<='9';
 }
 
-int find_number(int x, int y)
+bool find_number(int x, int y, int *store, int & index)
 {
-    if (!is_digit(x,y)) return -1;
+    if (!is_digit(x,y)) return false;
     while (is_digit(x-1,y)) x--;
     int number = 0;
     while (is_digit(x,y))
@@ -43,7 +43,8 @@ int find_number(int x, int y)
         number += map[y*stride+x] - '0';
         x++;
     }
-    return number;
+    store[index++] = number;
+    return true;
 
 }
 int main(int argc, const char *argv[])
@@ -70,14 +71,22 @@ int main(int argc, const char *argv[])
                 continue;
             }
             printf("*\n");
-{ int r = find_number(x-1, y-1); if (r!=-1) printf("%d\n", r); }
-{ int r = find_number(x, y-1); if (r!=-1) printf("%d\n", r); }
-{ int r = find_number(x+1, y-1); if (r!=-1) printf("%d\n", r); }
-{ int r = find_number(x-1, y); if (r!=-1) printf("%d\n", r); }
-{ int r = find_number(x+1, y); if (r!=-1) printf("%d\n", r); }
-{ int r = find_number(x-1, y+1); if (r!=-1) printf("%d\n", r); }
-{ int r = find_number(x, y+1); if (r!=-1) printf("%d\n", r); }
-{ int r = find_number(x+1, y+1); if (r!=-1) printf("%d\n", r); }
+            int index = 0;
+            int store[4];
+            if (!find_number(x, y-1, store, index))
+            {
+                find_number(x-1, y-1, store, index);
+                find_number(x+1, y-1, store, index);
+            }
+            find_number(x-1, y, store, index);
+            find_number(x+1, y, store, index);
+            if (!find_number(x, y+1, store, index))
+            {
+                find_number(x-1, y+1, store, index);
+                find_number(x+1, y+1, store, index);
+            }
+            if (index == 2)
+                total += store[0] * store[1];
         }
     }
     printf("%d\n", total);

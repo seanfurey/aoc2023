@@ -18,6 +18,13 @@ int find_width()
     return w;
 }
 
+bool is_symbol(char c)
+{
+    return c!='\n'
+&& c!='.'
+&& (c<'0' || c>'9');
+}
+
 int main(int argc, const char *argv[])
 {
 
@@ -35,7 +42,7 @@ for (int y=0; y<fileInfo.st_size; y+=stride)
 {
 for (int x=0; x<width; x+=1)
 {
-printf("%c", map[y+x]);
+printf("%c", is_symbol(map[y+x]));
 }
 printf("\n");
 }
